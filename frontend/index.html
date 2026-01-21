@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Registration</title>
+</head>
+<body>
+    <h1>Register Student</h1>
+    <form id="regForm">
+        <input type="text" placeholder="Name" id="name" required />
+        <input type="text" placeholder="Course" id="course" required />
+        <button type="submit">Register</button>
+    </form>
+
+    <script>
+        document.getElementById("regForm").onsubmit = async function(e) {
+            e.preventDefault();
+            await fetch("http://127.0.0.1:5000/register", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({
+                    name: name.value,
+                    course: course.value
+                })
+            });
+            alert("Student registered");
+        }
+    </script>
+</body>
+</html>
